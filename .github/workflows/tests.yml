@@ -106,8 +106,6 @@ jobs:
          with:
            name: binance-testrun-artifacts
            path: artifacts/
-
-
   Kucoin-Backtests:
     runs-on: ubuntu-20.04
     needs:
@@ -172,8 +170,6 @@ jobs:
         with:
           name: kucoin-testrun-artifacts
           path: artifacts/
-
-
   Backest-CI-Stats:
     runs-on: ubuntu-20.04
     needs:
