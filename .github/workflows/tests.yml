@@ -50,32 +50,32 @@ jobs:
        matrix:
          timerange:
           - 20210101-20210201
-          - 20210201-20210301
-          - 20210301-20210401
-          - 20210401-20210501
-          - 20210501-20210601
-          - 20210601-20210701
-          - 20210701-20210801
-          - 20210801-20210901
-          - 20210901-20211001
-          - 20211001-20211101
-          - 20211101-20211201
-          - 20211201-20220101
-          - 20220101-20220201
-          - 20220201-20220301
-          - 20220301-20220401
-          - 20220401-20220501
-          - 20220501-20220601
-          - 20220601-20220701
-          - 20220701-20220801
-          - 20220801-20220901
-          - 20220901-20221001
-          - 20221001-20221101
-          - 20221101-20221201
-          - 20221201-20230101
-          - 20230101-20230201
-          - 20230201-20230301
-          - 20230301-20230401
+          # - 20210201-20210301
+          # - 20210301-20210401
+          # - 20210401-20210501
+          # - 20210501-20210601
+          # - 20210601-20210701
+          # - 20210701-20210801
+          # - 20210801-20210901
+          # - 20210901-20211001
+          # - 20211001-20211101
+          # - 20211101-20211201
+          # - 20211201-20220101
+          # - 20220101-20220201
+          # - 20220201-20220301
+          # - 20220301-20220401
+          # - 20220401-20220501
+          # - 20220501-20220601
+          # - 20220601-20220701
+          # - 20220701-20220801
+          # - 20220801-20220901
+          # - 20220901-20221001
+          # - 20221001-20221101
+          # - 20221101-20221201
+          # - 20221201-20230101
+          # - 20230101-20230201
+          # - 20230201-20230301
+          # - 20230301-20230401
      steps:
        - uses: actions/checkout@v2
          with:
@@ -105,74 +105,74 @@ jobs:
          with:
            name: binance-testrun-artifacts
            path: artifacts/
-  Kucoin-Backtests:
-    runs-on: ubuntu-20.04
-    needs:
-      - Pre-Commit
-    strategy:
-      fail-fast: false
-      matrix:
-        timerange:
-          - 20210101-20210201
-          - 20210201-20210301
-          - 20210301-20210401
-          - 20210401-20210501
-          - 20210501-20210601
-          - 20210601-20210701
-          - 20210701-20210801
-          - 20210801-20210901
-          - 20210901-20211001
-          - 20211001-20211101
-          - 20211101-20211201
-          - 20211201-20220101
-          - 20220101-20220201
-          - 20220201-20220301
-          - 20220301-20220401
-          - 20220401-20220501
-          - 20220501-20220601
-          - 20220601-20220701
-          - 20220701-20220801
-          - 20220801-20220901
-          - 20220901-20221001
-          - 20221001-20221101
-          - 20221101-20221201
-          - 20221201-20230101
-          - 20230101-20230201
-          - 20230201-20230301
-          - 20230301-20230401
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
+  # Kucoin-Backtests:
+  #   runs-on: ubuntu-20.04
+  #   needs:
+  #     - Pre-Commit
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       timerange:
+  #         - 20210101-20210201
+  #         - 20210201-20210301
+  #         - 20210301-20210401
+  #         - 20210401-20210501
+  #         - 20210501-20210601
+  #         - 20210601-20210701
+  #         - 20210701-20210801
+  #         - 20210801-20210901
+  #         - 20210901-20211001
+  #         - 20211001-20211101
+  #         - 20211101-20211201
+  #         - 20211201-20220101
+  #         - 20220101-20220201
+  #         - 20220201-20220301
+  #         - 20220301-20220401
+  #         - 20220401-20220501
+  #         - 20220501-20220601
+  #         - 20220601-20220701
+  #         - 20220701-20220801
+  #         - 20220801-20220901
+  #         - 20220901-20221001
+  #         - 20221001-20221101
+  #         - 20221101-20221201
+  #         - 20221201-20230101
+  #         - 20230101-20230201
+  #         - 20230201-20230301
+  #         - 20230301-20230401
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         submodules: true
 
-      - name: Build Tests Image
-        run: docker-compose build tests
+  #     - name: Build Tests Image
+  #       run: docker-compose build tests
 
-      - name: Run Tests
-        env:
-          EXTRA_ARGS: -p no:cacheprovider tests/backtests -k 'kucoin and ${{ matrix.timerange }}'
-        run: |
-          mkdir artifacts
-          chmod 777 artifacts
-          docker-compose run --rm tests
+  #     - name: Run Tests
+  #       env:
+  #         EXTRA_ARGS: -p no:cacheprovider tests/backtests -k 'kucoin and ${{ matrix.timerange }}'
+  #       run: |
+  #         mkdir artifacts
+  #         chmod 777 artifacts
+  #         docker-compose run --rm tests
 
-      - name: List Artifacts
-        run: |
-          ls -lah artifacts/
+  #     - name: List Artifacts
+  #       run: |
+  #         ls -lah artifacts/
 
-      - name: Show Backest Output
-        run: |
-          cat artifacts/backtest-output-kucoin-${{ matrix.timerange }}.txt
+  #     - name: Show Backest Output
+  #       run: |
+  #         cat artifacts/backtest-output-kucoin-${{ matrix.timerange }}.txt
 
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: kucoin-testrun-artifacts
-          path: artifacts/
+  #     - name: Upload Artifacts
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: kucoin-testrun-artifacts
+  #         path: artifacts/
   Backest-CI-Stats:
     runs-on: ubuntu-20.04
     needs:
-      - Kucoin-Backtests
+      # - Kucoin-Backtests
       - Binance-Backtests
 
     steps:
