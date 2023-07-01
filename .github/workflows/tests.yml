@@ -178,7 +178,7 @@ jobs:
     runs-on: ubuntu-20.04
     needs:
       - Kucoin-Backtests
-       - Binance-Backtests
+      - Binance-Backtests
 
     steps:
 
