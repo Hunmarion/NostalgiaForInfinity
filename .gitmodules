@@ -1,4 +1,4 @@
 [submodule "user_data/data"]
 	path = user_data/data
-	url = https://github.com/hunmar/NostalgiaForInfinityData
+	url = git@github.com:hunmar/NostalgiaForInfinityData.git
 	branch = main

@@ -27,5 +27,5 @@ services:
       --timerange ${TIMERANGE:-20210601-20210701}
       --config user_data/data/pairlists.json
       --config user_data/data/${EXCHANGE:-binance}-usdt-static.json
-      --max-open-trades ${MAX_OPEN_TRADES:-5}
+      --max-open-trades ${MAX_OPEN_TRADES:-6}
       --stake-amount ${STAKE_AMOUNT:-unlimited}
