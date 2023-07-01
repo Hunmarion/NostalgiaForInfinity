@@ -40,7 +40,7 @@ jobs:
       uses: pre-commit/action@v2.0.3
       if: github.event_name == 'pull_request'
       with:
-        extra_args: --files ${{ steps.changed-files.outputs.repo_files }}  
+        extra_args: --files ${{ steps.changed-files.outputs.repo_files }}
   Binance-Backtests:
      runs-on: ubuntu-20.04
      needs:
