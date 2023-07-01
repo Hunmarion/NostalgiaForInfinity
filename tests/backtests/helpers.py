@@ -64,7 +64,7 @@ class Backtest:
         start_date,
         end_date,
         pairlist=None,
-        max_open_trades=5,
+        max_open_trades=6,
         stake_amount="unlimited",
         exchange=None,
     ):
@@ -85,6 +85,7 @@ class Backtest:
             f"--timerange={start_date}-{end_date}",
             f"--max-open-trades={max_open_trades}",
             f"--stake-amount={stake_amount}",
+            "--timeframe 5m",
             "--config=user_data/data/pairlists.json",
         ]
         if pairlist is None:
