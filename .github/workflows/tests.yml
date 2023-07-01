@@ -199,7 +199,7 @@ jobs:
 
       - name: Download Previous Kucoin CI Artifacts
         env:
-          GITHUB_TOKEN: ${{ secrets.COMMENT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python .github/workflows/scripts/download-previous-artifacts.py \
             --repo=${{ github.event.repository.full_name }} \
